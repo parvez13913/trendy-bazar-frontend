@@ -2,25 +2,12 @@
 
 import { Layout, Menu } from "antd";
 import React, { useState } from "react";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  ShoppingCartOutlined,
-} from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { sideBarItems } from "@/constants/sideBarItems";
 
 const SideBar = () => {
   const { Sider } = Layout;
-  const items = [
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    UserOutlined,
-  ].map((icon, index) => ({
-    key: String(index + 1),
-    icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
-  }));
+  const role = "admin";
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
@@ -59,7 +46,7 @@ const SideBar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={items}
+        items={sideBarItems(role)}
       />
     </Sider>
   );
