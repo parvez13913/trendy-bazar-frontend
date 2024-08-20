@@ -6,6 +6,7 @@ import {
   UploadOutlined,
   UserOutlined,
   VideoCameraOutlined,
+  ShoppingCartOutlined,
 } from "@ant-design/icons";
 
 const SideBar = () => {
@@ -26,8 +27,34 @@ const SideBar = () => {
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
+      width={280}
+      style={{
+        overflow: "auto",
+        height: "100vh",
+        position: "sticky",
+        left: 0,
+        top: 0,
+        bottom: 0,
+      }}
     >
-      <div className="demo-logo-vertical" />
+      <div
+        style={{
+          color: "#D6EFD8",
+          textAlign: "center",
+          fontFamily: "serif",
+          fontWeight: "bold",
+          marginBottom: ".5rem",
+          padding: "10px 0px",
+        }}
+      >
+        <ShoppingCartOutlined
+          style={{
+            fontSize: "2rem",
+            padding: "2px 0px",
+          }}
+        />
+        <h4>Trendy Bazar</h4>
+      </div>
       <Menu
         theme="dark"
         mode="inline"
