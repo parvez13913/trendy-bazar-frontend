@@ -11,7 +11,8 @@ type IInput = {
   id?: string;
   placeholder?: string;
   validation?: object;
-  lable?: string;
+  label?: string;
+  required?: boolean;
 };
 
 const FormInput = ({
@@ -22,12 +23,13 @@ const FormInput = ({
   id,
   placeholder,
   validation,
-  lable,
+  label,
+  required,
 }: IInput) => {
   const { control } = useFormContext();
   return (
     <>
-      {lable ? lable : null}
+      {label ? label : null}
       <Controller
         control={control}
         name={name}
