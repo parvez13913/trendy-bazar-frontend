@@ -28,7 +28,6 @@ const SideBar = () => {
         style={{
           color: "#D6EFD8",
           textAlign: "center",
-          fontFamily: "serif",
           fontWeight: "bold",
           marginBottom: ".5rem",
           padding: "10px 0px",

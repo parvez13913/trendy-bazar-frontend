@@ -2,6 +2,7 @@
 
 import { Input } from "antd";
 import { Controller, useFormContext } from "react-hook-form";
+import { UserOutlined } from "@ant-design/icons";
 
 type IInput = {
   name: string;
@@ -13,6 +14,7 @@ type IInput = {
   validation?: object;
   label?: string;
   required?: boolean;
+  prefix?: string;
 };
 
 const FormInput = ({
@@ -25,6 +27,7 @@ const FormInput = ({
   validation,
   label,
   required,
+  prefix,
 }: IInput) => {
   const { control } = useFormContext();
   return (
@@ -42,15 +45,27 @@ const FormInput = ({
       <Controller
         control={control}
         name={name}
-        render={({ field }) => (
-          <Input
-            type={type}
-            size={size}
-            placeholder={placeholder}
-            {...field}
-            value={value ? value : field.value}
-          />
-        )}
+        render={({ field }) =>
+          type === "password" ? (
+            <Input.Password
+              type={type}
+              size={size}
+              placeholder={placeholder}
+              {...field}
+              value={value ? value : field.value}
+            />
+          ) : (
+            <Input
+              style={{}}
+              type={type}
+              size={size}
+              placeholder={placeholder}
+              {...field}
+              value={value ? value : field.value}
+              prefix={prefix ? <UserOutlined /> : ""}
+            />
+          )
+        }
       />
     </>
   );

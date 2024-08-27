@@ -48,7 +48,6 @@ const Login = () => {
         <div
           style={{
             textAlign: "center",
-            fontFamily: "serif",
             fontWeight: "bold",
             color: "#508D4E",
           }}
@@ -69,7 +68,6 @@ const Login = () => {
             margin: "15px 0px",
             color: "#508D4E",
             textAlign: "center",
-            fontFamily: "serif",
           }}
         >
           Login
@@ -82,6 +80,8 @@ const Login = () => {
                 type="text"
                 size="large"
                 label="User Email"
+                prefix="prefix"
+                placeholder="Email"
                 required
               />
             </div>
@@ -95,6 +95,7 @@ const Login = () => {
                 type="password"
                 size="large"
                 label="User Password"
+                placeholder="Password"
                 required
               />
             </div>
