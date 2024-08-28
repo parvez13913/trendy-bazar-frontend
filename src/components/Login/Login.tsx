@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Col, Row } from "antd";
+import { Button, Col, message, Row } from "antd";
 import loginImage from "@/assets/login.svg";
 import Image from "next/image";
 import Form from "../Forms/Form";
@@ -8,6 +8,8 @@ import FormInput from "../Forms/FormInput";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import Link from "next/link";
 import { SubmitHandler } from "react-hook-form";
+import { useUserLoginMutation } from "@/redux/api/authApi";
+import { useRouter } from "next/navigation";
 
 type FormValues = {
   email: string;
@@ -15,9 +17,16 @@ type FormValues = {
 };
 
 const Login = () => {
+  const [userLogin] = useUserLoginMutation();
+  const router = useRouter();
   const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
     try {
-      console.log(data);
+      const response = await userLogin({ ...data }).unwrap();
+      console.log(response?.data?.accessToken);
+      if (response?.data?.accessToken) {
+        router.push("/profile");
+        message.success("User is Logged in successfully");
+      }
     } catch (error) {
       console.error(error);
     }
