@@ -3,6 +3,9 @@
 import { Button, Col, Row } from "antd";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
+import SelectField from "../Forms/SelectField";
+import { genderOptions } from "@/constants/global";
+import FormDatePicker from "../Forms/FormDatePicker";
 
 const Signup = () => {
   const onSubmit = async (data: any) => {
@@ -62,6 +65,21 @@ const Signup = () => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                size="large"
+              />
+            </Col>
+            <Col span={24} style={{ margin: "10px 0" }}>
+              <SelectField
+                name="gender"
+                label="Gender"
+                size="large"
+                options={genderOptions}
+              />
+            </Col>
+            <Col span={24} style={{ margin: "10px 0" }}>
+              <FormDatePicker
+                name="dateOfBirth"
+                label="Date Of Birth"
                 size="large"
               />
             </Col>
