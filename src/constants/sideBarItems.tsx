@@ -9,12 +9,6 @@ export const sideBarItems = (role: string) => {
       label: "Profile",
       key: "profile",
       icon: <ProfileOutlined />,
-      children: [
-        {
-          label: <Link href={`/${role}`}>Account Profile</Link>,
-          key: `/${role}/profile`,
-        },
-      ],
     },
   ];
 
@@ -44,29 +38,14 @@ export const sideBarItems = (role: string) => {
       icon: <TableOutlined />,
       key: `/${role}/admin`,
     },
-    {
-      label: <Link href={`/${role}/user`}>Manage User</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/user`,
-    },
-    {
-      label: <Link href={`/${role}/seller`}>Manage Seller</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/seller`,
-    },
-    {
-      label: <Link href={`/${role}/customer`}>Manage Customer</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/customer`,
-    },
   ];
 
   const customerSidebarItems: MenuProps["items"] = [
     ...defaultSidebarItems,
     {
-      label: <Link href={`/${role}/products`}>Products</Link>,
-      icon: <TableOutlined />,
-      key: `/${role}/products`,
+      label: "Profile",
+      key: "profile",
+      icon: <ProfileOutlined />,
     },
   ];
 

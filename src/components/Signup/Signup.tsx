@@ -1,37 +1,20 @@
 "use client";
-
-import { Button, Col, message, Row } from "antd";
-import loginImage from "@/assets/login.svg";
+import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
-import { ShoppingCartOutlined } from "@ant-design/icons";
 import Link from "next/link";
-import { SubmitHandler } from "react-hook-form";
-import { useUserLoginMutation } from "@/redux/api/authApi";
-import { useRouter } from "next/navigation";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import signupImage from "@/assets/signup.svg";
 
-type FormValues = {
-  email: string;
-  password: string;
-};
-
-const Login = () => {
-  const [userLogin] = useUserLoginMutation();
-  const router = useRouter();
-  const onSubmit: SubmitHandler<FormValues> = async (data: any) => {
+const Signup = () => {
+  const onSubmit = async (data: any) => {
     try {
-      const response = await userLogin({ ...data }).unwrap();
-      console.log(response?.data?.accessToken);
-      if (response?.data?.accessToken) {
-        router.push("/profile");
-        message.success("User is Logged in successfully");
-      }
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
   };
-
   return (
     <Row
       justify="center"
@@ -41,7 +24,7 @@ const Login = () => {
       }}
     >
       <Col sm={12} md={16} lg={10}>
-        <Image src={loginImage} width={500} alt="login image" />
+        <Image src={signupImage} width={500} alt="signup image" />
       </Col>
       <Col
         sm={12}
@@ -79,7 +62,7 @@ const Login = () => {
             textAlign: "center",
           }}
         >
-          Login
+          Signup
         </h1>
         <div>
           <Form submitHandler={onSubmit}>
@@ -109,14 +92,6 @@ const Login = () => {
               />
             </div>
             <div>
-              <div style={{ textAlign: "center", marginBottom: "1rem" }}>
-                <Link
-                  style={{ color: "#508D4E", fontWeight: "bold" }}
-                  href="/forgot-password"
-                >
-                  Forgot password?
-                </Link>
-              </div>
               <div
                 style={{
                   textAlign: "center",
@@ -125,13 +100,13 @@ const Login = () => {
               >
                 <p>
                   <span style={{ color: "#508D4E", fontWeight: "bold" }}>
-                    New to Trendy Bazar?
+                    Already Have an Account?
                   </span>{" "}
                   <Link
                     style={{ color: "red", fontWeight: "bold" }}
-                    href="/signup"
+                    href="/login"
                   >
-                    Please Sign up
+                    Please Login
                   </Link>
                 </p>
               </div>
@@ -145,7 +120,7 @@ const Login = () => {
                 color: "#D6EFD8",
               }}
             >
-              Login
+              Signup
             </Button>
           </Form>
         </div>
@@ -154,4 +129,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

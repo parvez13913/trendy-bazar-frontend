@@ -7,7 +7,7 @@ import { sideBarItems } from "@/constants/sideBarItems";
 
 const SideBar = () => {
   const { Sider } = Layout;
-  const role = "admin";
+  const role = "super_admin";
   const [collapsed, setCollapsed] = useState(false);
   return (
     <Sider
@@ -26,7 +26,7 @@ const SideBar = () => {
     >
       <div
         style={{
-          color: "#D6EFD8",
+          color: "#508D4E",
           textAlign: "center",
           fontWeight: "bold",
           marginBottom: ".5rem",
