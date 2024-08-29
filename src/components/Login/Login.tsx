@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Col, message, Row } from "antd";
+import { Button, Col, Flex, message, Row } from "antd";
 import loginImage from "@/assets/login.svg";
 import Image from "next/image";
 import Form from "../Forms/Form";
@@ -10,6 +10,9 @@ import Link from "next/link";
 import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import SignupModal from "../ui/SignupModal";
+import Signup from "../Signup/Signup";
 
 type FormValues = {
   email: string;
@@ -31,6 +34,9 @@ const Login = () => {
       console.error(error);
     }
   };
+
+  const [open, setOpen] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
 
   return (
     <Row
@@ -117,24 +123,6 @@ const Login = () => {
                   Forgot password?
                 </Link>
               </div>
-              <div
-                style={{
-                  textAlign: "center",
-                  marginBottom: "1rem",
-                }}
-              >
-                <p>
-                  <span style={{ color: "#508D4E", fontWeight: "bold" }}>
-                    New to Trendy Bazar?
-                  </span>{" "}
-                  <Link
-                    style={{ color: "red", fontWeight: "bold" }}
-                    href="/signup"
-                  >
-                    Please Sign up
-                  </Link>
-                </p>
-              </div>
             </div>
             <Button
               htmlType="submit"
@@ -143,13 +131,43 @@ const Login = () => {
               style={{
                 backgroundColor: "#508D4E",
                 color: "#D6EFD8",
+                marginBottom: "1rem",
               }}
             >
               Login
             </Button>
           </Form>
         </div>
+
+        <div style={{ display: "Flex", alignItems: "center" }}>
+          <div
+            style={{ height: "2px", backgroundColor: "#508D4E", width: "100%" }}
+          ></div>
+        </div>
+        <Button
+          type="text"
+          onClick={() => {
+            setOpen(true);
+          }}
+          htmlType="submit"
+          block
+          style={{
+            backgroundColor: "#508D4E",
+            color: "#D6EFD8",
+            marginTop: "1rem",
+          }}
+        >
+          Create Acount
+        </Button>
       </Col>
+
+      <SignupModal
+        title="Sign Up"
+        isOpen={open}
+        closeModal={() => setOpen(false)}
+      >
+        <Signup />
+      </SignupModal>
     </Row>
   );
 };
