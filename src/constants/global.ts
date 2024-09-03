@@ -50,8 +50,8 @@ export const bloodGroupOptions = [
 
 export const roleOptions = [
   {
-    label: "Cstomer",
-    value: "cstomer",
+    label: "Customer",
+    value: "customer",
   },
   {
     label: "Seller",

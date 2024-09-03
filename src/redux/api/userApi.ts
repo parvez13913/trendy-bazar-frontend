@@ -5,14 +5,22 @@ const USER_URL = "/users";
 const userApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     addSeller: build.mutation({
-      query: (loginData) => ({
+      query: (sellerData) => ({
         url: `${USER_URL}/createSeller`,
         method: "POST",
-        data: loginData,
+        data: sellerData,
       }),
-      invalidatesTags: [tagTypes.user]
+      invalidatesTags: [tagTypes.seller]
+    }),
+    addCustomer: build.mutation({
+      query: (customerData) => ({
+        url: `${USER_URL}/createCustomer`,
+        method: "POST",
+        data: customerData,
+      }),
+      invalidatesTags: [tagTypes.customer]
     }),
   }),
 })
 
-export const { useAddSellerMutation } = userApi;
+export const { useAddSellerMutation, useAddCustomerMutation } = userApi;

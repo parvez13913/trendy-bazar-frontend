@@ -7,8 +7,14 @@ import SelectField from "../Forms/SelectField";
 import { genderOptions, roleOptions } from "@/constants/global";
 import FormDatePicker from "../Forms/FormDatePicker";
 import UploadImage from "../ui/UploadImage";
+import {
+  useAddCustomerMutation,
+  useAddSellerMutation,
+} from "@/redux/api/userApi";
 
 const Signup = () => {
+  const [addSeller] = useAddSellerMutation();
+  const [addCustomer] = useAddCustomerMutation();
   const onSubmit = async (values: any) => {
     const obj = { ...values };
     const file = obj["file"];
@@ -18,7 +24,13 @@ const Signup = () => {
     formData.append("file", file as Blob);
     formData.append("data", data);
     try {
-      console.log(formData);
+      if (values?.role === "seller") {
+        const response = addSeller(formData).unwrap();
+        console.log(response);
+      } else if (values?.role === "customer") {
+        const response = addCustomer(formData).unwrap();
+        console.log(response);
+      }
     } catch (error) {
       console.error(error);
     }
