@@ -4,8 +4,9 @@ import { Button, Col, Row } from "antd";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 import SelectField from "../Forms/SelectField";
-import { genderOptions } from "@/constants/global";
+import { genderOptions, roleOptions } from "@/constants/global";
 import FormDatePicker from "../Forms/FormDatePicker";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 const Signup = () => {
   const onSubmit = async (data: any) => {
@@ -17,6 +18,34 @@ const Signup = () => {
   };
   return (
     <div>
+      <div
+        style={{
+          textAlign: "center",
+          fontWeight: "bold",
+          color: "#508D4E",
+        }}
+      >
+        <ShoppingCartOutlined
+          style={{
+            fontSize: "2rem",
+            padding: "1.5rem",
+            border: "1px solid",
+            borderRadius: "100%",
+            borderColor: "#508D4E",
+          }}
+        />
+        <h4>Trendy Bazar</h4>
+      </div>
+      <h1
+        style={{
+          margin: "15px 0px",
+          color: "#508D4E",
+          textAlign: "center",
+        }}
+      >
+        Sign Up
+      </h1>
+
       <Form submitHandler={onSubmit}>
         <div
           style={{
@@ -51,7 +80,7 @@ const Signup = () => {
               />
             </Col>
           </Row>
-          <Row>
+          <Row gutter={{ xs: 24, xl: 8, lg: 10, md: 24 }}>
             <Col span={24} style={{ margin: "10px 0" }}>
               <FormInput
                 type="password"
@@ -70,6 +99,14 @@ const Signup = () => {
             </Col>
             <Col span={24} style={{ margin: "10px 0" }}>
               <SelectField
+                name="role"
+                label="Role"
+                size="large"
+                options={roleOptions}
+              />
+            </Col>
+            <Col span={24} style={{ margin: "10px 0" }}>
+              <SelectField
                 name="gender"
                 label="Gender"
                 size="large"
@@ -83,9 +120,44 @@ const Signup = () => {
                 size="large"
               />
             </Col>
+            <Col span={12} style={{ margin: "10px 0" }}>
+              <FormInput
+                name="contactNo"
+                placeholder="Contact No"
+                size="large"
+              />
+            </Col>
+            <Col span={12} style={{ margin: "10px 0" }}>
+              <FormInput
+                name="emergencyContactNo"
+                placeholder="Emergency Contact No"
+                size="large"
+              />
+            </Col>
+            <Col span={12} style={{ margin: "10px 0" }}>
+              <FormInput
+                name="presentAddress"
+                placeholder="Present Address"
+                size="large"
+              />
+            </Col>
+            <Col span={12} style={{ margin: "10px 0" }}>
+              <FormInput
+                name="permanentAddress"
+                placeholder="Permanent Address"
+                size="large"
+              />
+            </Col>
           </Row>
         </div>
-        <Button type="primary" htmlType="submit">
+        <Button
+          htmlType="submit"
+          block
+          style={{
+            backgroundColor: "#508D4E",
+            color: "#D6EFD8",
+          }}
+        >
           Sign Up
         </Button>
       </Form>

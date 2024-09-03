@@ -32,7 +32,16 @@ const SelectField = ({
 
   return (
     <>
-      {label ? label : null}
+      {label ? (
+        <span
+          style={{
+            color: "#508D4E",
+            fontWeight: "bold",
+          }}
+        >
+          {label}
+        </span>
+      ) : null}
       <Controller
         control={control}
         name={name}

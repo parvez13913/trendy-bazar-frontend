@@ -47,3 +47,14 @@ export const bloodGroupOptions = [
     value: "O+",
   },
 ];
+
+export const roleOptions = [
+  {
+    label: "Cstomer",
+    value: "cstomer",
+  },
+  {
+    label: "Seller",
+    value: "seller",
+  },
+]

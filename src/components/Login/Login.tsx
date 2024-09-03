@@ -36,7 +36,6 @@ const Login = () => {
   };
 
   const [open, setOpen] = useState<boolean>(false);
-  const [loading, setLoading] = useState(false);
 
   return (
     <Row
@@ -71,7 +70,7 @@ const Login = () => {
             style={{
               fontSize: "2rem",
               padding: "1.5rem",
-              border: "2px solid",
+              border: "1px solid",
               borderRadius: "100%",
               borderColor: "#508D4E",
             }}
@@ -161,11 +160,7 @@ const Login = () => {
         </Button>
       </Col>
 
-      <SignupModal
-        title="Sign Up"
-        isOpen={open}
-        closeModal={() => setOpen(false)}
-      >
+      <SignupModal isOpen={open} closeModal={() => setOpen(false)}>
         <Signup />
       </SignupModal>
     </Row>
