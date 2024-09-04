@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SignupModal from "../ui/SignupModal";
 import Signup from "../Signup/Signup";
+import { storeUserInfo } from "@/service/auth.service";
 
 type FormValues = {
   email: string;
@@ -29,6 +30,7 @@ const Login = () => {
         router.push("/profile");
         message.success("User is Logged in successfully");
       }
+      storeUserInfo({ accessToken: response?.data?.accessToken });
     } catch (error) {
       console.error(error);
     }
