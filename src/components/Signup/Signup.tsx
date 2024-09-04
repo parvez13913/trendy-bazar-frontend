@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Col, Row } from "antd";
+import { Button, Col, message, Row } from "antd";
 import Form from "../Forms/Form";
 import FormInput from "../Forms/FormInput";
 import SelectField from "../Forms/SelectField";
@@ -11,10 +11,12 @@ import {
   useAddCustomerMutation,
   useAddSellerMutation,
 } from "@/redux/api/userApi";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
   const [addSeller] = useAddSellerMutation();
   const [addCustomer] = useAddCustomerMutation();
+  const router = useRouter();
   const onSubmit = async (values: any) => {
     const obj = { ...values };
     const file = obj["file"];
@@ -25,11 +27,17 @@ const Signup = () => {
     formData.append("data", data);
     try {
       if (values?.role === "seller") {
-        const response = addSeller(formData).unwrap();
-        console.log(response);
+        const response = await addSeller(formData).unwrap();
+        if (!!response?.data?.email) {
+          router.push("/profile");
+          message.success("Seller created successfully");
+        }
       } else if (values?.role === "customer") {
-        const response = addCustomer(formData).unwrap();
-        console.log(response);
+        const response = await addCustomer(formData).unwrap();
+        if (!!response?.data?.email) {
+          router.push("/profile");
+          message.success("Customer created successfully");
+        }
       }
     } catch (error) {
       console.error(error);
