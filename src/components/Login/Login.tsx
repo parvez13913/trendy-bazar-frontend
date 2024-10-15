@@ -1,19 +1,19 @@
 "use client";
 
-import { Button, Col, Flex, message, Row } from "antd";
 import loginImage from "@/assets/login.svg";
-import Image from "next/image";
-import Form from "../Forms/Form";
-import FormInput from "../Forms/FormInput";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import Link from "next/link";
-import { SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "@/redux/api/authApi";
+import { storeUserInfo } from "@/service/auth.service";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+import { Button, Col, message, Row } from "antd";
+import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import SignupModal from "../ui/SignupModal";
+import { SubmitHandler } from "react-hook-form";
+import Form from "../Forms/Form";
+import FormInput from "../Forms/FormInput";
 import Signup from "../Signup/Signup";
-import { storeUserInfo } from "@/service/auth.service";
+import SignupModal from "../ui/SignupModal";
 
 type FormValues = {
   email: string;
@@ -157,7 +157,7 @@ const Login = () => {
             marginTop: "1rem",
           }}
         >
-          Create Acount
+          Create Account
         </Button>
       </Col>
 
