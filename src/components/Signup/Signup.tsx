@@ -1,17 +1,17 @@
 "use client";
 
-import { Button, Col, message, Row } from "antd";
-import Form from "../Forms/Form";
-import FormInput from "../Forms/FormInput";
-import SelectField from "../Forms/SelectField";
 import { genderOptions, roleOptions } from "@/constants/global";
-import FormDatePicker from "../Forms/FormDatePicker";
-import UploadImage from "../ui/UploadImage";
 import {
   useAddCustomerMutation,
   useAddSellerMutation,
 } from "@/redux/api/userApi";
+import { Button, Col, message, Row } from "antd";
 import { useRouter } from "next/navigation";
+import Form from "../Forms/Form";
+import FormDatePicker from "../Forms/FormDatePicker";
+import FormInput from "../Forms/FormInput";
+import SelectField from "../Forms/SelectField";
+import UploadImage from "../ui/UploadImage";
 
 const Signup = () => {
   const [addSeller] = useAddSellerMutation();
