@@ -35,7 +35,7 @@ const Signup = () => {
       } else if (values?.role === "customer") {
         const response = await addCustomer(formData).unwrap();
         if (!!response?.data?.email) {
-          router.push("/profile");
+          router.push("/home");
           message.success("Customer created successfully");
         }
       }
