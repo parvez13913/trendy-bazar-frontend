@@ -1,17 +1,51 @@
 "use client";
 
+import { useUserQuery } from "@/redux/api/userApi";
+import { getUserInfo } from "@/service/auth.service";
 import { UserOutlined } from "@ant-design/icons";
-import { Button, Card, DatePicker, Form, Input, Layout, Select } from "antd";
+import {
+  Button,
+  Card,
+  DatePicker,
+  Form,
+  Image,
+  Input,
+  Layout,
+  Select,
+} from "antd";
 
 const { Content } = Layout;
 const { Option } = Select;
 
 const ProfilePage = () => {
+  const { userEmail } = getUserInfo() as any;
+  const { data } = useUserQuery(userEmail);
+
   return (
     <Layout style={{ minHeight: "5vh" }}>
       <div style={{ padding: "16px", textAlign: "center" }}>
-        <UserOutlined style={{ fontSize: "48px" }} />
-        <h3>Hello,Parvez Rahman</h3>
+        <h1 style={{ textAlign: "left" }}>Welcome To Your Profile</h1>
+        <Card
+          style={{ width: 300, margin: "auto" }}
+          cover={
+            data?.data && data?.data?.profileImage ? (
+              <Image
+                width="auto"
+                height="100%"
+                alt="Profile"
+                src={data?.data?.profileImage}
+              />
+            ) : (
+              <UserOutlined style={{ fontSize: "48px" }} />
+            )
+          }
+        ></Card>
+        {data && (
+          <p style={{ fontSize: "20px", fontWeight: "bold" }}>
+            {data?.data?.name?.firstName} {data?.data?.name?.middleName}{" "}
+            {data?.data?.name?.lastName}
+          </p>
+        )}
       </div>
       <Layout style={{ padding: "24px" }}>
         <Content>

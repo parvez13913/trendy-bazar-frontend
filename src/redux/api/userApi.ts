@@ -1,5 +1,5 @@
-import { baseApi } from "./baseApi"
 import { tagTypes } from "../tag-types";
+import { baseApi } from "./baseApi";
 
 const USER_URL = "/users";
 const userApi = baseApi.injectEndpoints({
@@ -10,7 +10,7 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         data: sellerData,
       }),
-      invalidatesTags: [tagTypes.seller]
+      invalidatesTags: [tagTypes.seller],
     }),
     addCustomer: build.mutation({
       query: (customerData) => ({
@@ -18,9 +18,17 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         data: customerData,
       }),
-      invalidatesTags: [tagTypes.customer]
+      invalidatesTags: [tagTypes.customer],
+    }),
+    user: build.query({
+      query: (userEmail) => ({
+        url: `${USER_URL}/${userEmail}`,
+        method: "GET",
+      }),
+      providesTags: [tagTypes.user],
     }),
   }),
-})
+});
 
-export const { useAddSellerMutation, useAddCustomerMutation } = userApi;
+export const { useAddSellerMutation, useAddCustomerMutation, useUserQuery } =
+  userApi;
